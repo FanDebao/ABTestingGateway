@@ -1,8 +1,17 @@
 rm *temp -rf
 
-/usr/local/nginx/sbin/nginx -p `pwd` -c conf/nginx.conf  -s stop
-/usr/local/nginx/sbin/nginx -p `pwd` -c conf/stable.conf -s stop
-/usr/local/nginx/sbin/nginx -p `pwd` -c conf/beta1.conf  -s stop
-/usr/local/nginx/sbin/nginx -p `pwd` -c conf/beta2.conf  -s stop
-/usr/local/nginx/sbin/nginx -p `pwd` -c conf/beta3.conf  -s stop
-/usr/local/nginx/sbin/nginx -p `pwd` -c conf/beta4.conf  -s stop
+#NGINX="/data/openresty1915/nginx/sbin/nginx"
+NGINX="/usr/local/openresty/nginx/sbin/nginx"
+$NGINX -p `pwd` -c conf/nginx.conf -s stop
+$NGINX -p `pwd` -c conf/stable.conf -s stop
+$NGINX -p `pwd` -c conf/beta1.conf -s stop
+$NGINX -p `pwd` -c conf/beta2.conf -s stop
+$NGINX -p `pwd` -c conf/beta3.conf -s stop
+$NGINX -p `pwd` -c conf/beta4.conf -s stop
+
+#/usr/local/nginx/sbin/nginx -p `pwd` -c conf/nginx.conf  -s stop
+#/usr/local/nginx/sbin/nginx -p `pwd` -c conf/stable.conf -s stop
+#/usr/local/nginx/sbin/nginx -p `pwd` -c conf/beta1.conf  -s stop
+#/usr/local/nginx/sbin/nginx -p `pwd` -c conf/beta2.conf  -s stop
+#/usr/local/nginx/sbin/nginx -p `pwd` -c conf/beta3.conf  -s stop
+#/usr/local/nginx/sbin/nginx -p `pwd` -c conf/beta4.conf  -s stop
