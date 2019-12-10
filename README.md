@@ -64,6 +64,14 @@ Features:
 
 > > 注意：tengine用户仍然可以使用本项目，只需要从openresty软件包中获取最新的ngx_lua、LuaJIT以及lua-cjson等，并注意：[必读](https://github.com/CNSRE/ABTestingGateway/issues/27#issuecomment-236149255) 
 
+修改说明
+------------------
+由于原项目作者项目中使用了引入openresty的lua-resty-core和resty库相关包，导致在不通的openresty版本中会出现部分lua-resty-core相关api接口不可用，所以我把引入的openresty的lua-resty-core和resty全部从本项目中移除，让它依赖于openresty安装目录里的包，同时把utils/sema.lua脚本中引用local semaphore = require("lua-resty-core.lib.ngx.semaphore")改成了local semaphore = require("ngx.semaphore")使用，这样做的好处就是当前项目所依赖的openresty库包全部从安装的openresty路径中获取，业务只需要关心实现的业务代码就好。同时修改了下nginx.conf里面lua_package_path，删除lib/lua-resty-core/lib/?.lua引用。对于使用者来说，只需要安装好openresty和redis基础服务，其他的使用流程和原作者文档一致。目前在openrest-1.9.7.5、openresty-1.9.15.1、openresty-1.15.8.1版本中使用均ok.
+
+欢迎有任何问题和意见和我沟通。
+Jayden geikiy@qq.com
+
+
 how to start
 -----------------------
 repo中的`utils/conf`文件夹中有灰度系统部署所需的最小示例
